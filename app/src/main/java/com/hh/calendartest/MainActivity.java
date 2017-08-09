@@ -1,10 +1,12 @@
 package com.hh.calendartest;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -59,12 +61,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return;
                 }
 
+                TextView txt = adapterView.getChildAt(currentPositionChoosed).findViewById(R.id.date_txt);
+                RelativeLayout rl = adapterView.getChildAt(currentPositionChoosed).findViewById(R.id.date_rl);
+                TextView txt2 = adapterView.getChildAt(position).findViewById(R.id.date_txt);
+                RelativeLayout rl1 = adapterView.getChildAt(position).findViewById(R.id.date_rl);
+                txt.setTextColor(Color.parseColor("#777777"));
+                rl.setBackground(null);
+                txt2.setTextColor(Color.parseColor("#FFFFFF"));
+                rl1.setBackgroundColor(Color.parseColor("#ff6d00"));
 
                 Log.i("day_click","点击："+currentYear+"年"+(currentMonth+1)+"月"+(currentPositionChoosed-7-emptyTop+1)+"日" +
                         "currentPositionChoosed :"+ currentPositionChoosed + " position :" +position);
 
-                adapterView.getChildAt(currentPositionChoosed).setSelected(false);
-                adapterView.getChildAt(position).setSelected(true);
+                // 控件设置seleced属性会出问题
+//                adapterView.getChildAt(currentPositionChoosed).setSelected(false);
+//                adapterView.getChildAt(position).setSelected(true);
                 currentPositionChoosed = position;
 
                 adapter.setChoosedDate(currentYear, currentMonth, currentPositionChoosed, currentYear, currentMonth);

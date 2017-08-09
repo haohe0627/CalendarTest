@@ -112,12 +112,19 @@ public class DateAdapter extends BaseAdapter {
         else
             txt.setText(position - 7 - emptyTop + 1+"");
 
-        if(position == choosedPosition &&  currentYear == choosedYear && currentMonth == choosedMonth)
+        if(position == choosedPosition &&  currentYear == choosedYear && currentMonth == choosedMonth){
+
 //            date_rl.setSelected(true);
-            txt.setTextColor(Color.parseColor("#ff6d00"));
-        else
+            txt.setTextColor(Color.parseColor("#FFFFFF"));
+            date_rl.setBackgroundColor(Color.parseColor("#ff6d00"));
+        }
+
+        else{
+
 //            date_rl.setSelected(false);
             txt.setTextColor(Color.parseColor("#777777"));
+            date_rl.setBackground(null);
+        }
 
         return view;
     }
